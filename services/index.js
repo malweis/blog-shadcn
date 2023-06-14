@@ -1,4 +1,5 @@
 import { request, gql } from 'graphql-request';
+import { NextResponse } from 'next/server';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
@@ -207,13 +208,17 @@ export const getFeaturedPosts = async () => {
 };
 
 export const submitComment = async (obj) => {
-  const result = await fetch('/api/comments', {
+  const { name, email, comment, slug } = obj;
+  console.log(name, email, comment, slug, obj)
+  const result = await fetch('/api', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(obj),
+    body: JSON.stringify( obj),
   });
+
+
 
   return result.json();
 };

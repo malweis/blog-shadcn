@@ -120,7 +120,7 @@ const PostDetail = ({ post }: PostCardProps) => {
       </div>
       <div className="px-4 lg:px-0 ">
         <div className="flex items-center mb-8 w-full">
-          <div className="flex items-center  mb-4 lg:mb-0 w-full lg:w-auto mr-8 items-center">
+          <div className="flex items-center  mb-4 lg:mb-0 w-full lg:w-auto mr-8 ">
             <Image
               unoptimized
               loader={grpahCMSImageLoader}
