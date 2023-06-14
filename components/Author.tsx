@@ -1,6 +1,22 @@
 import React from 'react'
 
-const Author = () => {
+
+interface Author {
+  
+    bio: string;
+    name: string;
+    id: string;
+    photo: {
+      url: string;
+    };
+  
+}
+
+interface AuthorProps {
+  author: Author;
+}
+
+const Author = ( {author} : AuthorProps) => {
   return (
     <div>Author</div>
   )

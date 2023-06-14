@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Comments = () => {
+interface Slug {
+  slug: string;
+}
+
+
+const Comments = ({slug} :Slug) => {
   return (
     <div>Comments</div>
   )

@@ -1,6 +1,10 @@
 import React from 'react'
 
-const CommentsForm = () => {
+interface Slug {
+  slug: string;
+}
+
+const CommentsForm = ({slug} :Slug) => {
   return (
     <div>CommentsForm</div>
   )
