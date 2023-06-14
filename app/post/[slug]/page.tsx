@@ -37,6 +37,8 @@ interface Post {
 }
 
 
+
+
 type category = {
   slug: string;
   name: string;
