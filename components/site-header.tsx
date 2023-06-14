@@ -1,52 +1,39 @@
-import Link from "next/link"
+"use client"
+import React, { useState, useEffect } from 'react';
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
+import Link from 'next/link';
+import { getCategories } from '../services';
 
-export function SiteHeader() {
+interface Category {
+  name: string;
+  slug: string;
+}
+
+const Header = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    getCategories().then((newCategories) => {
+      setCategories(newCategories);
+    });
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav items={siteConfig.mainNav} />
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-1">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.gitHub className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "sm",
-                  variant: "ghost",
-                })}
-              >
-                <Icons.twitter className="h-5 w-5 fill-current" />
-                <span className="sr-only">Twitter</span>
-              </div>
-            </Link>
-            <ThemeToggle />
-          </nav>
+    <div className="container mx-auto px-10 mb-8">
+      <div className="border-b w-full inline-block border-white py-8">
+        <div className="md:float-left block">
+          <Link href="/">
+            <span className="cursor-pointer font-bold text-4xl text-white">Blog Next</span>
+          </Link>
+        </div>
+        <div className="hidden md:float-left md:contents">
+          {categories.map((category, index) => (
+            <Link key={index} href={`/category/${category.slug}`}><span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">{category.name}</span></Link>
+          ))}
         </div>
       </div>
-    </header>
-  )
-}
+    </div>
+  );
+};
+
+export default Header;
