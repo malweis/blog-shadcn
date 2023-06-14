@@ -55,13 +55,6 @@ export default async function IndexPage() {
   )
 }
 
-export async function getStaticProps() {
-  const posts = (await getPosts()) || [];
-  return {
-    props: { posts },
-  };
-}
-
 // `app` directory
  
 // This function can be named anything
