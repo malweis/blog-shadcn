@@ -5,6 +5,8 @@ import Link from "next/link"
 
 import { getCategories } from "../services"
 
+import { ThemeToggle } from "./theme-toggle"
+
 interface Category {
   name: string
   slug: string
@@ -30,6 +32,9 @@ const Header = () => {
           </Link>
         </div>
         <div className="hidden md:float-left md:contents">
+          
+              <div className="flex flex-1 items-center justify-end space-x-4">
+          <nav className="flex items-center space-x-1">
           {categories.map((category, index) => (
             <Link key={index} href={`/category/${category.slug}`}>
               <span className="ml-4 mt-2 cursor-pointer align-middle  text-white md:float-right">
@@ -37,8 +42,13 @@ const Header = () => {
               </span>
             </Link>
           ))}
+            <ThemeToggle />
+          </nav>
         </div>
+        </div>
+     
       </div>
+      
     </div>
   )
 }
