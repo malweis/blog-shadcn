@@ -83,7 +83,7 @@ export default async function Page({ params }: parametros) {
 }
 
 async function getPosteos(slug: string) {
-  const res = (await await getPostDetails(slug)) || []
+  const res = ( await getPostDetails(slug)) || []
   const post = res
 
   return post

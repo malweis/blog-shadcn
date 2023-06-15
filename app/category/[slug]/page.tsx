@@ -31,8 +31,11 @@ interface Post {
   }
 }
 
-interface PostCardProps {
-  posts: Post[]
+interface category{
+
+    name: string
+    slug: string
+ 
 }
 
 interface parametros {
@@ -44,7 +47,10 @@ interface parametros {
 
 
 export async function generateStaticParams() {
-  return [<Loader />]
+  const categories = await getCategories();
+  return categories.map((categories :category) => ({
+    slug: categories.slug,
+  }))
 }
 
 export default async function Page({ params }: parametros) {
@@ -71,7 +77,7 @@ export default async function Page({ params }: parametros) {
 // Fetch data at build time
 
 async function getPostos(slug: string) {
-  const res = (await await getCategoryPost(slug)) || []
+  const res = ( await getCategoryPost(slug)) || []
   const post = res
 
   return post
