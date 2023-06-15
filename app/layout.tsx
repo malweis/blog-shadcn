@@ -1,5 +1,4 @@
 import "@/styles/globals.css"
-
 import { Metadata } from "next"
 
 import { siteConfig } from "@/config/site"
@@ -34,13 +33,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-     
         <head>
           <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <title>Blog</title>
         </head>
-       
+
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",

@@ -68,7 +68,7 @@ const PostDetail = ({ post }: PostCardProps) => {
     switch (type) {
       case "heading-three":
         return (
-          <h3 key={index} className="text-xl font-semibold mb-4">
+          <h3 key={index} className="mb-4 text-xl font-semibold">
             {modifiedText.map((item: any, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -84,7 +84,7 @@ const PostDetail = ({ post }: PostCardProps) => {
         )
       case "heading-four":
         return (
-          <h4 key={index} className="text-md font-semibold mb-4">
+          <h4 key={index} className="text-md mb-4 font-semibold">
             {modifiedText.map((item: any, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -106,38 +106,38 @@ const PostDetail = ({ post }: PostCardProps) => {
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 m-8">
-      <div className="relative overflow-hidden shadow-md mb-6">
+    <div className="m-8 rounded-lg bg-white pb-12 shadow-lg lg:p-8">
+      <div className="relative mb-6 overflow-hidden shadow-md">
         <Image
           unoptimized
           loader={grpahCMSImageLoader}
           alt={post.title}
           height={30}
           width={30}
-          className="object-top h-full w-full rounded-t-lg lg:rounded-lg"
+          className="h-full w-full rounded-t-lg object-top lg:rounded-lg"
           src={post.featuredImage.url}
         />
       </div>
       <div className="px-4 lg:px-0 ">
-        <div className="flex items-center mb-8 w-full">
-          <div className="flex items-center  mb-4 lg:mb-0 w-full lg:w-auto mr-8 ">
+        <div className="mb-8 flex w-full items-center">
+          <div className="mb-4 mr-8  flex w-full items-center lg:mb-0 lg:w-auto ">
             <Image
               unoptimized
               loader={grpahCMSImageLoader}
               alt={post.author.name}
               height={30}
               width={30}
-              className="align-middle rounded-full"
+              className="rounded-full align-middle"
               src={post.author.photo.url}
             />
-            <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">
+            <p className="ml-2 inline align-middle text-lg font-medium text-gray-700">
               {post.author.name}
             </p>
           </div>
           <div className="font-medium text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 inline mr-2 text-pink-500"
+              className="mr-2 inline h-6 w-6 text-pink-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -155,16 +155,16 @@ const PostDetail = ({ post }: PostCardProps) => {
           </div>
         </div>
 
-      <h1 className="mb- text-3xl font-semibold">{post.title}</h1>
-      {post.content.raw.children.map((typeObj: any, index: number) => {
-        const children = typeObj.children.map((item: any, itemindex: number) =>
-          getContentFragment(itemindex, item.text, item)
-        )
+        <h1 className="mb- text-3xl font-semibold">{post.title}</h1>
+        {post.content.raw.children.map((typeObj: any, index: number) => {
+          const children = typeObj.children.map(
+            (item: any, itemindex: number) =>
+              getContentFragment(itemindex, item.text, item)
+          )
 
-        return getContentFragment(index, children, typeObj, typeObj.type)
-      })}
+          return getContentFragment(index, children, typeObj, typeObj.type)
+        })}
       </div>
-
     </div>
   )
 }

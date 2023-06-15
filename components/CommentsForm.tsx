@@ -1,138 +1,140 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { submitComment } from '../services';
+import React, { ChangeEvent, useEffect, useState } from "react"
+
+import { submitComment } from "../services"
 
 interface Slug {
-  slug: string;
+  slug: string
 }
 
 interface CommentResponse {
-  
-    createComment: any
-    
-  
+  createComment: any
+
   // Other properties if applicable
 }
 
 interface FormData {
-  name: string | null;
-  email: string | null;
-  comment: string | null;
-  storeData: boolean;
+  name: string | null
+  email: string | null
+  comment: string | null
+  storeData: boolean
 }
 
 const CommentsForm = ({ slug }: Slug) => {
-  const [error, setError] = useState<boolean>(false);
-  const [localStorage, setLocalStorage] = useState<Storage | null>(null);
-  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false)
+  const [localStorage, setLocalStorage] = useState<Storage | null>(null)
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false)
   const [formData, setFormData] = useState<FormData>({
     name: null,
     email: null,
     comment: null,
     storeData: false,
-  });
+  })
 
   useEffect(() => {
-    setLocalStorage(window.localStorage);
+    setLocalStorage(window.localStorage)
     const initialFormData: FormData = {
-      name: window.localStorage.getItem('name'),
-      email: window.localStorage.getItem('email'),
+      name: window.localStorage.getItem("name"),
+      email: window.localStorage.getItem("email"),
       storeData: !!(
-        window.localStorage.getItem('name') || window.localStorage.getItem('email')
+        window.localStorage.getItem("name") ||
+        window.localStorage.getItem("email")
       ),
       comment: null,
-    };
-    setFormData(initialFormData);
-  }, []);
+    }
+    setFormData(initialFormData)
+  }, [])
 
-  const onInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const target = e.target as HTMLInputElement; // Explicitly type target as HTMLInputElement
-    if (target.type === 'checkbox') {
+  const onInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const target = e.target as HTMLInputElement // Explicitly type target as HTMLInputElement
+    if (target.type === "checkbox") {
       setFormData((prevState) => ({
         ...prevState,
         [target.name]: target.checked,
-      }));
+      }))
     } else {
       setFormData((prevState) => ({
         ...prevState,
         [target.name]: target.value,
-      }));
+      }))
     }
-  };
-  
+  }
 
   const handlePostSubmission = () => {
-    setError(false);
-    const { name, email, comment, storeData } = formData;
+    setError(false)
+    const { name, email, comment, storeData } = formData
     if (!name || !email || !comment) {
-      setError(true);
-      return;
+      setError(true)
+      return
     }
     const commentObj = {
       name,
       email,
       comment,
       slug,
-    };
+    }
 
     if (storeData) {
-      localStorage?.setItem('name', name);
-      localStorage?.setItem('email', email);
+      localStorage?.setItem("name", name)
+      localStorage?.setItem("email", email)
     } else {
-      localStorage?.removeItem('name');
-      localStorage?.removeItem('email');
+      localStorage?.removeItem("name")
+      localStorage?.removeItem("email")
     }
     console.log(commentObj)
     submitComment(commentObj).then((res) => {
-      
       if (res.createComment) {
         if (!storeData) {
-          formData.name = '';
-          formData.email = '';
+          formData.name = ""
+          formData.email = ""
         }
-        formData.comment = '';
+        formData.comment = ""
         setFormData((prevState) => ({
           ...prevState,
           ...formData,
-        }));
-        setShowSuccessMessage(true);
+        }))
+        setShowSuccessMessage(true)
         setTimeout(() => {
-          setShowSuccessMessage(false);
-        }, 3000);
+          setShowSuccessMessage(false)
+        }, 3000)
       }
-    });
-  };
+    })
+  }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-      <h3 className="text-xl mb-8 font-semibold border-b pb-4">Deja un comentario</h3>
-      <div className="grid grid-cols-1 gap-4 mb-4">
+    <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg">
+      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">
+        Deja un comentario
+      </h3>
+      <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
-          value={formData.comment || ''}
+          value={formData.comment || ""}
           onChange={onInputChange}
-          className="p-4 outline-none w-full rounded-lg h-40 focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="h-40 w-full rounded-lg bg-gray-100 p-4 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200"
           name="comment"
           placeholder="Comentario"
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
         <input
           type="text"
-          value={formData.name || ''}
+          value={formData.name || ""}
           onChange={onInputChange}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="w-full rounded-lg bg-gray-100 px-4 py-2 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200"
           placeholder="Nombre"
           name="name"
         />
         <input
           type="email"
-          value={formData.email || ''}
+          value={formData.email || ""}
           onChange={onInputChange}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
+          className="w-full rounded-lg bg-gray-100 px-4 py-2 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200"
           placeholder="Email"
           name="email"
         />
       </div>
-      <div className="grid grid-cols-1 gap-4 mb-4">
+      <div className="mb-4 grid grid-cols-1 gap-4">
         <div>
           <input
             checked={formData.storeData}
@@ -142,28 +144,30 @@ const CommentsForm = ({ slug }: Slug) => {
             name="storeData"
             value="true"
           />
-          <label className="text-gray-500 cursor-pointer" htmlFor="storeData">
+          <label className="cursor-pointer text-gray-500" htmlFor="storeData">
             Guardar mi nombre y email para la proxima vez que comente
           </label>
         </div>
       </div>
-      {error && <p className="text-xs text-red-500">All fields are mandatory</p>}
+      {error && (
+        <p className="text-xs text-red-500">All fields are mandatory</p>
+      )}
       <div className="mt-8">
         <button
           type="button"
           onClick={handlePostSubmission}
-          className="transition duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
+          className="ease inline-block cursor-pointer rounded-full bg-pink-600 px-8 py-3 text-lg font-medium text-white transition duration-500 hover:bg-indigo-900"
         >
           Post Comment
         </button>
         {showSuccessMessage && (
-          <span className="text-xl float-right font-semibold mt-3 text-green-500">
+          <span className="float-right mt-3 text-xl font-semibold text-green-500">
             Comentario enviado con éxito, aparecera una vez sea aprobado
           </span>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CommentsForm;
+export default CommentsForm

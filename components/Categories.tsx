@@ -1,35 +1,32 @@
 "use client"
-import React, {useState, useEffect} from 'react'
-import Link from 'next/link';
 
-import { getCategories } from '@/services';
-
+import React, { useEffect, useState } from "react"
+import Link from "next/link"
+import { getCategories } from "@/services"
 
 type category = {
-  slug: string;
-  name: string;
-};
+  slug: string
+  name: string
+}
 
 export const Categories = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    getCategories().then((res) => setCategories(res));
-  }, []); 
+    getCategories().then((res) => setCategories(res))
+  }, [])
   return (
-    <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
-      <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
-        Categorias
-      </h3>
-      {categories.map((category : category) => (
+    <div className="mb-8 rounded-lg bg-white p-8 shadow-lg">
+      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">Categorias</h3>
+      {categories.map((category: category) => (
         <Link href={`/category/${category.slug}`} key={category.slug}>
-          <span className='cursor-pointer block pb-3 mb-3'>
+          <span className="mb-3 block cursor-pointer pb-3">
             {category.name}
           </span>
-          </Link>
+        </Link>
       ))}
     </div>
   )
 }
 
-export default Categories;
+export default Categories

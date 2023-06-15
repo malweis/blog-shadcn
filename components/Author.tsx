@@ -1,39 +1,37 @@
-import React from 'react'
-import Image from 'next/image';
-import { grpahCMSImageLoader } from '@/utils';
+import React from "react"
+import Image from "next/image"
+import { grpahCMSImageLoader } from "@/utils"
 
 interface Author {
-  
-    bio: string;
-    name: string;
-    id: string;
-    photo: {
-      url: string;
-    };
-  
+  bio: string
+  name: string
+  id: string
+  photo: {
+    url: string
+  }
 }
 
 interface AuthorProps {
-  author: Author;
+  author: Author
 }
 
-const Author = ( {author} : AuthorProps) => {
+const Author = ({ author }: AuthorProps) => {
   return (
-    <div className="text-center mt-20 mb-8 p-12 relative rounded-lg bg-black bg-opacity-20">
-    <div className="absolute w-full flex justify-center right-0 left-0 -top-14">
-      <Image
-        unoptimized
-        loader={grpahCMSImageLoader}
-        alt={author.name}
-        height={100}
-        width={100}
-        className="align-middle rounded-full"
-        src={author.photo.url}
-      />
+    <div className="relative mb-8 mt-20 rounded-lg bg-black bg-opacity-20 p-12 text-center">
+      <div className="absolute -top-14 left-0 right-0 flex w-full justify-center">
+        <Image
+          unoptimized
+          loader={grpahCMSImageLoader}
+          alt={author.name}
+          height={100}
+          width={100}
+          className="rounded-full align-middle"
+          src={author.photo.url}
+        />
+      </div>
+      <h3 className="mb-4 mt-4 text-xl font-bold text-white">{author.name}</h3>
+      <p className="text-ls text-white">{author.bio}</p>
     </div>
-    <h3 className="text-white mt-4 mb-4 text-xl font-bold">{author.name}</h3>
-    <p className="text-white text-ls">{author.bio}</p>
-  </div>
   )
 }
 
