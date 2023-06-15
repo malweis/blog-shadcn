@@ -103,15 +103,15 @@ const CommentsForm = ({ slug }: Slug) => {
   }
 
   return (
-    <div className="mb-8 rounded-lg bg-background border p-8 pb-12 shadow-lg">
-      <h3 className="mb-8 border-b pb-4 text-xl text-primary font-semibold">
+    <div className="mb-8 rounded-lg border bg-background p-8 pb-12 shadow-lg">
+      <h3 className="mb-8 border-b pb-4 text-xl font-semibold text-primary">
         Deja un comentario
       </h3>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
           value={formData.comment || ""}
           onChange={onInputChange}
-          className="h-40 w-full rounded-lg bg-primary-foreground p-4 text-primaryoutline-none focus:ring-2 focus:ring-gray-200"
+          className="text-primary outline-none h-40 w-full rounded-lg bg-primary-foreground p-4 focus:ring-2 focus:ring-gray-200"
           name="comment"
           placeholder="Comentario"
         />
@@ -156,10 +156,13 @@ const CommentsForm = ({ slug }: Slug) => {
         <button
           type="button"
           onClick={handlePostSubmission}
-          className="ease inline-block cursor-pointer rounded-full bg-pink-600 px-8 py-3 text-lg font-medium text-white transition duration-500 hover:bg-indigo-900"
+          className="pushable"
         >
-          Post Comment
+          <span className="shadow"></span>
+          <span className="edge"></span>
+          <span className="front">Publicar comentario</span>
         </button>
+
         {showSuccessMessage && (
           <span className="float-right mt-3 text-xl font-semibold text-green-500">
             Comentario enviado con éxito, aparecera una vez sea aprobado
