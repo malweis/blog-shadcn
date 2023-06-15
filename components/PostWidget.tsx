@@ -49,8 +49,8 @@ const PostWidget = ({ slug, categories }: PostWidgetProps) => {
   }, [])
 
   return (
-    <div className="mb-8 rounded-lg bg-white p-8 shadow-lg">
-      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">
+    <div className="mb-8 rounded-lg bg-background border p-8 shadow-lg">
+      <h3 className="mb-8 border-b pb-4 text-xl  text-primary font-semibold">
         {slug ? "Post Relacionados" : "Posts Recientes"}
       </h3>
       {relatedPosts.map((post: Post) => (
@@ -67,13 +67,13 @@ const PostWidget = ({ slug, categories }: PostWidgetProps) => {
             />
           </div>
           <div className="flew-grow ml-4">
-            <p className="font-xs text-gray-500">
+            <p className="font-xs text-primary">
               {moment(post.createdAt).format("MMM DD, YYYY")}
             </p>
             <Link
               href={`/post/${post.slug}`}
               key={post.title}
-              className="text-md"
+              className="text-md text-primary"
             >
               {post.title}
             </Link>

@@ -68,7 +68,7 @@ const PostDetail = ({ post }: PostCardProps) => {
     switch (type) {
       case "heading-three":
         return (
-          <h3 key={index} className="mb-4 text-xl font-semibold">
+          <h3 key={index} className="mb-4 text-xl  text-primary font-semibold">
             {modifiedText.map((item: any, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -76,7 +76,7 @@ const PostDetail = ({ post }: PostCardProps) => {
         )
       case "paragraph":
         return (
-          <p key={index} className="mb-8">
+          <p key={index} className="mb-8 text-primary ">
             {modifiedText.map((item: any, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -84,7 +84,7 @@ const PostDetail = ({ post }: PostCardProps) => {
         )
       case "heading-four":
         return (
-          <h4 key={index} className="text-md mb-4 font-semibold">
+          <h4 key={index} className="text-md mb-4  text-primary font-semibold">
             {modifiedText.map((item: any, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -106,7 +106,7 @@ const PostDetail = ({ post }: PostCardProps) => {
   }
 
   return (
-    <div className="m-8 rounded-lg bg-white pb-12 shadow-lg lg:p-8">
+    <div className="m-8 rounded-lg bg-background pb-12 shadow-lg border lg:p-8">
       <div className="relative mb-6 overflow-hidden shadow-md">
         <Image
           unoptimized
@@ -130,7 +130,7 @@ const PostDetail = ({ post }: PostCardProps) => {
               className="rounded-full align-middle"
               src={post.author.photo.url}
             />
-            <p className="ml-2 inline align-middle text-lg font-medium text-gray-700">
+            <p className="ml-2 inline align-middle text-lg font-medium text-primary">
               {post.author.name}
             </p>
           </div>
@@ -149,13 +149,13 @@ const PostDetail = ({ post }: PostCardProps) => {
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               />
             </svg>
-            <span className="align-middle">
+            <span className="align-middle  text-primary">
               {moment(post.createdAt).format("MMM DD, YYYY")}
             </span>
           </div>
         </div>
 
-        <h1 className="mb- text-3xl font-semibold">{post.title}</h1>
+        <h1 className="mb- text-3xl  text-primary font-semibold">{post.title}</h1>
         {post.content.raw.children.map((typeObj: any, index: number) => {
           const children = typeObj.children.map(
             (item: any, itemindex: number) =>

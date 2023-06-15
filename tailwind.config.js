@@ -18,6 +18,7 @@ module.exports = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        backgroundAuthor: "hsl(var(--backgroundAuthor))",
         foreground: "hsl(var(--foreground))",
         homepage: "hsl(var(--color-homepage-bg))",
         arriba: '( linear-gradient(315deg,hsl(263deg 45% 56%) 0%,hsl(264deg 49% 58%) 7%,hsl(264deg 53% 60%) 15%,hsl(265deg 57% 62%) 24%,hsl(266deg 62% 64%) 34%,hsl(267deg 67% 66%) 45%,hsl(266deg 66% 62%) 56%,hsl(266deg 66% 59%) 68%,hsl(265deg 66% 55%) 79%,hsl(265deg 65% 51%) 90%,hsl(265deg 76% 46%) 100%))',

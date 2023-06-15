@@ -16,11 +16,11 @@ export const Categories = () => {
     getCategories().then((res) => setCategories(res))
   }, [])
   return (
-    <div className="mb-8 rounded-lg bg-white p-8 shadow-lg">
-      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">Categorias</h3>
+    <div className="mb-8 rounded-lg bg-background p-8  border shadow-lg">
+      <h3 className="mb-8 border-b pb-4 text-xl  text-primary font-semibold">Categorias</h3>
       {categories.map((category: category) => (
         <Link href={`/category/${category.slug}`} key={category.slug}>
-          <span className="mb-3 block cursor-pointer pb-3">
+          <span className="mb-3 block  text-primary cursor-pointer pb-3">
             {category.name}
           </span>
         </Link>
