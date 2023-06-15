@@ -17,7 +17,7 @@ interface AuthorProps {
 
 const Author = ({ author }: AuthorProps) => {
   return (
-    <div className="relative mb-8 mt-20 rounded-lg bg-primary-foreground  bg-opacity-20 p-12 text-center">
+    <div className="relative mb-8 mt-20 rounded-lg bg-primary-foreground  border border-accent bg-opacity-20 p-12 text-center">
       <div className="absolute -top-14 left-0 right-0 flex w-full justify-center">
         <Image
           unoptimized
