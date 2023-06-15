@@ -17,7 +17,7 @@ export const Categories = () => {
   }, [])
   return (
     <div className="mb-8 rounded-lg bg-background p-8  border shadow-lg">
-      <h3 className="mb-8 border-b pb-4 text-xl  text-primary font-semibold">Categorias</h3>
+      <h3 className="mb-8 border-b border-accent pb-4 text-xl  text-primary font-semibold">Categorias</h3>
       {categories.map((category: category) => (
         <Link href={`/category/${category.slug}`} key={category.slug}>
           <span className="mb-3 block  text-primary cursor-pointer pb-3">
