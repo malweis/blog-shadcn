@@ -57,7 +57,7 @@ const PostWidget = ({ slug, categories }: PostWidgetProps) => {
         <div key={post.title} className="mb-4 flex w-full items-center">
           <div className="w-16 flex-none">
             <Image
-              unoptimized
+              
               loader={grpahCMSImageLoader}
               alt={post.title}
               height={60}
