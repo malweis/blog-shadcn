@@ -99,9 +99,13 @@ const PostCard = ({ post }: PostCardProps) => (
     </p>
     <div className="text-center">
       <Link href={`/post/${post.node.slug}`}>
-        <span className="ease inline-block transform cursor-pointer rounded-full bg-pink-600 px-8 py-3 text-lg font-medium text-white transition duration-500 hover:-translate-y-1">
-          Continue Reading
-        </span>
+      <button className="pushable">
+  <span className="shadow"></span>
+  <span className="edge"></span>
+  <span className="front">
+    Continuar leyendo
+  </span>
+</button>
       </Link>
     </div>
   </div>
