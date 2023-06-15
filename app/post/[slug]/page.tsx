@@ -10,6 +10,7 @@ import {
   PostWidget,
 } from "@/components"
 import { getPostDetails, getPosts } from "@/services"
+import Loader from "@/components/Loader"
 
 interface Post {
   cursor: string
@@ -48,8 +49,13 @@ type category = {
   slug: string;
   name: string;
 };
+export const dynamicParams = true;
+ 
+export async function generateStaticParams() {
+ return [<Loader/>]
+}
 
-export default async function Page({ params }:parametros) {
+export default async function Page({ params }: parametros) {
   const post = await getPosteos(params.slug)
 
   return (
