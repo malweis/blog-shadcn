@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+
+    
+   
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -80,6 +83,20 @@
   }
 }@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
+:root{
+  --font-weight-bold: 600;
+  --font-weight-medium: 500;
+  --font-weight-light: 400;
+  --font-family: 'Wotfard','Wotfard-fallback',sans-serif;
+  --font-family-mono: 'League Mono','Fira Mono',monospace;
+  --font-family-spicy: 'Sriracha','Wotfard',Futura,-apple-system,sans-serif;
+  --reach-dialog: 1;
+  --color-background: hsl(0deg, 0%, 100%);
+  --color-homepage-light: hsl(204deg, 67%, 85%);
+  --color-homepage-dark: hsl(202deg, 71%, 90%);
+  --color-homepage-bg: hsl(204deg, 67%, 85%);
+}
+
 html,
 body {
   padding: 0;
@@ -92,7 +109,8 @@ body:before {
   content: '';
   width: 100%;
   height: 100vh;
-  background-image: url("../public/bg.svg");
+  font-family: var(--font-family);
+    font-weight: var(--font-weight-light);
   position: fixed;
   left: 0;
   top: 0;
@@ -131,4 +149,64 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.tops{
+  position: relative;
+  z-index: 3;
+
+  background-image: linear-gradient(
+  315deg,
+  hsl(263deg 45% 56%) 0%,
+  hsl(264deg 49% 58%) 7%,
+  hsl(264deg 53% 60%) 15%,
+  hsl(265deg 57% 62%) 24%,
+  hsl(266deg 62% 64%) 34%,
+  hsl(267deg 67% 66%) 45%,
+  hsl(266deg 66% 62%) 56%,
+  hsl(266deg 66% 59%) 68%,
+  hsl(265deg 66% 55%) 79%,
+  hsl(265deg 65% 51%) 90%,
+  hsl(265deg 76% 46%) 100%
+);
+  transition: --color-homepage-light 350ms linear 0s, --color-homepage-dark 350ms linear 0s;
+}
+
+@media (min-width: 769px){
+
+.tops {
+    height: 250px;
+}
+}
+.epuvUc {
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 90px;
+  transform: translateY(1px);
+  z-index: 3;
+}
+.exNWwu {
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  bottom: 0px;
+  width: 106%;
+  min-width: 600px;
+  max-width: unset;
+  z-index: 3;
+}
+.exNWwu path {
+  fill: var(--color-background);
+  transition: fill 350ms ease 0s;
+  z-index: 3;
+}
+.headers{
+  position: sticky;
+  top: 0px;
+  z-index: 2;
 }

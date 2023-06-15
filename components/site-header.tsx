@@ -20,11 +20,11 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="container mx-auto mb-8 px-10">
-      <div className="inline-block w-full  py-8">
+    <div className="container mx-auto mb-8 px-10 headers">
+      <div className=" w-full  py-8">
         <div className="block md:float-left">
           <Link href="/">
-            <span className="cursor-pointer text-4xl font-light text-black">
+            <span className="cursor-pointer font-semibold text-2xl text-white">
               Blog Next
             </span>
           </Link>
@@ -32,7 +32,7 @@ const Header = () => {
         <div className="hidden md:float-left md:contents">
           {categories.map((category, index) => (
             <Link key={index} href={`/category/${category.slug}`}>
-              <span className="ml-4 mt-2 cursor-pointer align-middle  text-black md:float-right">
+              <span className="ml-4 mt-2 cursor-pointer align-middle  text-white md:float-right">
                 {category.name}
               </span>
             </Link>
