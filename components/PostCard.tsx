@@ -49,7 +49,7 @@ const PostCard = ({ post }: PostCardProps) => (
       />
     </div> */}
     <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
-      <img
+      <Image
         src={post.node.featuredImage.url}
         alt=""
         className="absolute h-80 w-full rounded-t-lg object-cover  object-top shadow-lg lg:rounded-lg"
@@ -62,7 +62,7 @@ const PostCard = ({ post }: PostCardProps) => (
     <div className="mb-8 block w-full items-center justify-center text-center lg:flex">
       <div className="mb-4 mr-8 flex w-full items-center justify-center lg:mb-0 lg:w-auto ">
         <Image
-          unoptimized
+          
           loader={grpahCMSImageLoader}
           alt={post.node.author.name}
           height={30}
