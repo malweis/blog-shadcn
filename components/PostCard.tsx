@@ -52,6 +52,8 @@ const PostCard = ({ post }: PostCardProps) => (
       <Image
         src={post.node.featuredImage.url}
         alt=""
+        width={320}
+        height={320}
         className="absolute h-80 w-full rounded-t-lg object-cover  object-top shadow-lg lg:rounded-lg"
       />
     </div>
