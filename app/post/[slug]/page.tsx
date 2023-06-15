@@ -36,6 +36,11 @@ interface Post {
   }
 }
 
+interface parametros{
+   params :{
+      slug :string
+   }
+}
 
 
 
@@ -44,7 +49,7 @@ type category = {
   name: string;
 };
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }:parametros) {
   const post = await getPosteos(params.slug)
 
   return (
