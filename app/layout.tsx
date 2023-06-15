@@ -28,7 +28,8 @@ export const metadata: Metadata = {
 interface RootLayoutProps {
   children: React.ReactNode
 }
-
+const dynamicParams = false;
+export { dynamicParams };
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (

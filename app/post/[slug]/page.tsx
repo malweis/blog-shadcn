@@ -48,7 +48,7 @@ type category = {
   slug: string
   name: string
 }
-export const dynamicParams = true
+
 
 export async function generateStaticParams() {
   return [<Loader />]
